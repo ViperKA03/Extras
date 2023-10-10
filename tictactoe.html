@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+</head>
+
+<style>
+  body{
+    background-image: url(pics/wood.jpg);
+    
+  }
+    .tbl{
+        margin-left: auto;
+  margin-right: auto;
+  height: 380px;
+  width: 380px;
+}
+input[type="button"]{
+  
+  font-size: 0px;
+    height: 200px;
+    width: 200px;
+}
+.circle{
+background-image: url(pics/circleee.jpg);
+background-repeat: no-repeat;
+    background-size: contain;
+
+
+
+
+}
+.cross{
+ 
+    background-image: url(pics/cross.jpg)   ;
+    background-repeat: no-repeat;
+    background-size: contain;
+    
+     
+}
+
+
+
+
+    
+   
+</style>
+<script >
+  
+  
+     var flag=true;
+        var digit=0;
+
+    function docheck(){
+        if(flag==true){
+            digit=1;
+            flag=false;
+        }
+        else
+        {
+            digit=2;
+            flag=true;
+        }
+        
+        return digit;
+
+    }
+    function checkforwin(){
+        var one=(document.querySelector("#a1").value);
+        
+        var two=(document.querySelector("#a2").value);
+        var three=(document.querySelector("#a3").value);
+        var four=(document.querySelector("#a4").value);
+        var five=(document.querySelector("#a5").value);
+        var six=(document.querySelector("#a6").value);
+        var seven=(document.querySelector("#a7").value);
+        var eight=(document.querySelector("#a8").value);
+        var nine=(document.querySelector("#a9").value);
+       
+        if((one!="0")&&(one==two)&&(two==three))
+       return "win";
+         else if ((one!="0") && (one==four)&&(one==seven))
+         return "win";
+        else if((one!="0")&& (one==five)&& (one==nine))
+        return "win";
+        else if((four!="0")&&(four==five)&&(four==six))
+        return "win";
+        else if((seven!="0")&&(seven==eight)&& (seven==nine))
+        return "win";
+        else if((seven!="0")&& (seven==five) && (seven==three))
+        return "win";
+        else if((two!="0")&& (two==five)&& (two==eight))
+        return "win";
+        else if((three!="0") && (three==six) &&(three==nine))
+        return "win";
+        else if( one!="0"&& two!="0"&& three!="0"&& four!="0"&& five!="0"&& six!="0"&& seven!="0"&& eight!="0"&& nine!="0")
+        return "draw";
+        
+        
+
+    }
+    function dodisable(){
+        document.querySelector("#a1").disabled=true;
+        document.querySelector("#a2").disabled=true;
+        document.querySelector("#a3").disabled=true;
+        document.querySelector("#a4").disabled=true;
+        document.querySelector("#a5").disabled=true;
+        document.querySelector("#a6").disabled=true;
+        document.querySelector("#a7").disabled=true;
+        document.querySelector("#a8").disabled=true;
+        document.querySelector("#a9").disabled=true;
+
+
+
+
+    }
+    
+    $(document).ready(function(){
+      audiost.play();
+      $("#player").hide();
+      $("#p1").hide();
+      $("#p2").hide();
+      $("#pa").hide();
+      $("#quit").hide();
+      $("#draw").hide();
+
+      $("#a1").click(function(){
+       var i= docheck();
+      
+       
+      
+        $("#a1").val(i);
+        if(i==1){
+        $("#a1").addClass("cross")
+      audiocro.play();}
+        else if(i==2){
+audiocir.play();
+        
+        $("#a1").addClass("circle");
+      }
+       
+
+
+        $("#a1").unbind();
+        var status=checkforwin();
+              if(status=="win"){
+              
+                dodisable();
+               
+                $("#player").fadeIn();
+                if(i==1)
+                $("#p1").fadeIn();
+                else if(i==2)
+                $("#p2").fadeIn();
+                $("#pa").fadeIn();
+                $("#quit").fadeIn();
+                
+                audiowi.play();
+
+              
+
+
+              }
+              else if(status=="draw"){
+                $("#draw").fadeIn();
+                audiodr.play();
+                $("#pa").fadeIn();
+                $("#quit").fadeIn();
+
+              }
+       
+        
+      })
+      $("#a2").click(function(){
+       var i= docheck();
+        $("#a2").val(i);
+       
+        if(i==1){
+        $("#a2").addClass("cross")
+      audiocro.play();}
+        else if(i==2){
+        $("#a2").addClass("circle");
+      audiocir.play();}
+
+
+        $("#a2").unbind();
+        var status=checkforwin();
+              if(status=="win"){
+                
+                dodisable();
+               
+                $("#player").fadeIn();
+                if(i==1)
+                $("#p1").fadeIn();
+                else if(i==2)
+                $("#p2").fadeIn();
+                $("#pa").fadeIn();
+                $("#quit").fadeIn();
+
+                audiowi.play();
+
+
+
+              }
+              else if(status=="draw"){
+                $("#draw").fadeIn();
+                $("#pa").fadeIn();
+                $("#quit").fadeIn();
+                audiodr.play();
+
+              }
+              
+      })
+      $("#a3").click(function(){
+       var i= docheck();
+        $("#a3").val(i);
+        if(i==1){
+
+        
+        $("#a3").addClass("cross")
+      audiocro.play();
+      }
+        else if(i==2){
+        $("#a3").addClass("circle");
+      audiocir.play();}
+
+        $("#a3").unbind();
+        var status=checkforwin();
+              if(status=="win"){
+               
+                dodisable();
+                
+                $("#player").fadeIn();
+                if(i==1)
+                $("#p1").fadeIn();
+                else if(i==2)
+                $("#p2").fadeIn();
+                $("#pa").fadeIn();
+                $("#quit").fadeIn();
+              
+                audiowi.play();
+
+
+              }
+              else if(status=="draw"){
+                $("#draw").fadeIn();
+                $("#pa").fadeIn();
+                $("#quit").fadeIn();
+                audiodr.play();
+
+              }
+      })
+      $("#a4").click(function(){
+       var i= docheck();
+        $("#a4").val(i);
+       
+        if(i==1){
+        $("#a4").addClass("cross")
+      audiocro.play();}
+        else if(i==2){
+        $("#a4").addClass("circle");
+      audiocir.play();}
+        $("#a4").unbind();
+        var status=checkforwin();
+              if(status=="win"){
+               
+                dodisable();
+                
+                $("#player").fadeIn();
+                if(i==1)
+                $("#p1").fadeIn();
+                else if(i==2)
+                $("#p2").fadeIn();
+                $("#pa").fadeIn();
+                $("#quit").fadeIn();
+                audiowi.play();
+
+
+
+              }
+              else if(status=="draw"){
+                $("#draw").fadeIn();
+                $("#pa").fadeIn();
+                $("#quit").fadeIn();
+                audiodr.play();
+
+              }
+      })
+      $("#a5").click(function(){
+       var i= docheck();
+        $("#a5").val(i);
+        if(i==1){
+        $("#a5").addClass("cross")
+      audiocro.play();
+      }
+        else if(i==2){
+        $("#a5").addClass("circle");
+      audiocir.play();
+      }
+        $("#a5").unbind();
+        var status=checkforwin();
+              if(status=="win"){
+               
+                dodisable();
+               
+              
+                $("#player").fadeIn();
+                
+                if(i==1)
+                $("#p1").fadeIn();
+                
+                else if(i==2)
+                $("#p2").fadeIn();
+                $("#pa").fadeIn();
+                $("#quit").fadeIn();
+                audiowi.play();
+
+
+
+              }
+              else if(status=="draw"){
+                $("#draw").fadeIn();
+                $("#pa").fadeIn();
+                $("#quit").fadeIn();
+                audiodr.play();
+
+              }
+              
+      })
+      $("#a6").click(function(){
+       var i= docheck();
+        $("#a6").val(i);
+        if(i==1){
+        $("#a6").addClass("cross")
+        audiocro.play();
+        }
+        else if(i==2){
+        $("#a6").addClass("circle");
+      audiocir.play();
+    }
+        $("#a6").unbind();
+        var status=checkforwin();
+              if(status=="win"){
+               
+                dodisable();
+                
+                $("#player").fadeIn();
+                if(i==1)
+                $("#p1").fadeIn();
+                else if(i==2)
+                $("#p2").fadeIn();
+                $("#pa").fadeIn();
+                $("#quit").fadeIn();
+              
+                audiowi.play();
+
+
+              }
+              else if(status=="draw"){
+                $("#draw").fadeIn();
+                $("#pa").fadeIn();
+                $("#quit").fadeIn();
+                audiodr.play();
+
+              }
+      })
+      $("#a7").click(function(){
+       var i= docheck();
+       if(i==1){
+        $("#a7").addClass("cross")
+        audiocro.play();
+
+      }
+        else if(i==2){
+        $("#a7").addClass("circle");
+        audiocir.play();
+      }
+        $("#a7").val(i);
+        $("#a7").unbind();
+        var status=checkforwin();
+              if(status=="win"){
+               
+                dodisable();
+               
+                $("#player").fadeIn();
+                if(i==1)
+                $("#p1").fadeIn();
+                else if(i==2)
+                $("#p2").fadeIn();
+                $("#pa").fadeIn();
+                $("#quit").fadeIn();
+                audiowi.play();
+
+
+
+              }
+              else if(status=="draw"){
+                $("#draw").fadeIn();
+                $("#pa").fadeIn();
+                $("#quit").fadeIn();
+                audiodr.play();
+
+              }
+              
+      })
+      $("#a8").click(function(){
+       var i= docheck();
+       if(i==1){
+        $("#a8").addClass("cross")
+        audiocro.play();
+      }
+        else if(i==2){
+        $("#a8").addClass("circle");
+        audiocir.play();
+      }
+        $("#a8").val(i);
+        $("#a8").unbind();
+        var status=checkforwin();
+              if(status=="win"){
+                
+                dodisable();
+                
+                
+                $("#player").fadeIn();
+                if(i==1)
+                $("#p1").fadeIn();
+                else if(i==2)
+                $("#p2").fadeIn();
+                $("#pa").fadeIn();
+                $("#quit").fadeIn();
+
+                audiowi.play();
+
+              }
+              else if(status=="draw"){
+                $("#draw").fadeIn();
+                $("#pa").fadeIn();
+                $("#quit").fadeIn();
+                audiodr.play();
+
+              }
+      })
+      $("#a9").click(function(){
+       var i= docheck();
+        $("#a9").val(i);
+        if(i==1){
+        $("#a9").addClass("cross")
+        audiocro.play();
+      }
+        else if(i==2){
+        $("#a9").addClass("circle");
+           audiocir.play();      
+      }
+        $("#a9").unbind();
+        var status=checkforwin();
+              if(status=="win"){
+                
+                dodisable();
+                $("#head").fadeOut();
+              $("#player").fadeIn();
+                if(i==1){
+                $("#p1").fadeIn();
+
+              }
+                else if(i==2)
+                $("#p2").fadeIn();
+
+
+                $("#pa").fadeIn();
+                $("#quit").fadeIn();
+                audiowi.play();
+
+
+              }
+              else if(status=="draw"){
+                $("#head").fadeOut();
+                $("#draw").fadeIn();
+                $("#pa").fadeIn();
+                $("#quit").fadeIn();
+                audiodr.play();
+
+              }
+      })
+
+      
+       
+       
+    })
+    const audiocir=new Audio();
+    const audiocro=new Audio();
+    const audiopa=new Audio();
+    const audioqu=new Audio();
+    const audiowi=new Audio();
+    const audiodr=new Audio();
+    const audiost=new Audio();
+
+    audiocir.src="sounds/circle.wav";
+    audiocro.src="sounds/cross.wav";
+    audiopa.src="sounds/pa.wav";
+    audioqu.src="sounds/quit.wav";
+    audiowi.src="sounds/winner.mp3";
+    audiodr.src="sounds/draw.wav";
+    audiost.src="sounds/start.wav";
+    
+
+</script>
+<body>
+    
+    
+    <center>
+      
+       <!-- <div id="head"><img src="pics/head.png" alt=""></div> -->
+       <br> <br>
+        <div  id="p1"><img src="pics/p1.png" alt="" ></div>
+        <div  id="p2"><img src="pics/p2.png" alt=""></div>
+        <div id="draw"> <img src="pics/draw.png" alt=""></div>
+        <a href="tictactoe.html">
+        <div id="pa" style="size: 50px;"><img src="pics/pa.png" alt=""  onclick="" ></div></a>
+        <a href="tfptictactoe.html" id="quitt" onclick="audioqu.play();" ><div  id="quit" style="size: 30px;"><img src="pics/quit.png" alt=""></div></a>
+
+     
+      
+    <table  border="1px" rules="all" class="tbl" id="tableeee" >
+       <tr>
+        <td><input type="button" value="0" id="a1" name="1"></td>
+        <td><input type="button" value="0" id="a2"></td>
+        <td><input type="button" value="0" id="a3"></td>
+       </tr>
+       <tr>
+        <td><input type="button" value="0" id="a4"></td>
+        <td><input type="button" value="0" id="a5"></td>
+        <td><input type="button" value="0" id="a6"></td>
+       </tr>
+       <tr>
+        <td><input type="button" value="0" id="a7"></td>
+        <td><input type="button" value="0" id="a8"></td>
+        <td><input type="button" value="0" id="a9"></td>
+       </tr>
+    </center>
+
+<audio src="sounds/circle.wav" id="circlesound"></audio>
+    </table>
+    
+</body>
+</html>
